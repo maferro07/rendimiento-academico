@@ -76,3 +76,25 @@ print(df_clean[[
     "writing_score",
     "average_score"
 ]].head())
+
+# =========================================
+# CLASIFICACION DEL RENDIMIENTO
+# =========================================
+
+df_clean["performance"] = ""
+
+for i in range(len(df_clean)):
+
+    promedio = df_clean.loc[i, "average_score"]
+
+    if promedio < 60:
+        df_clean.loc[i, "performance"] = "Bajo"
+
+    elif promedio < 80:
+        df_clean.loc[i, "performance"] = "Medio"
+
+    else:
+        df_clean.loc[i, "performance"] = "Alto"
+
+print("\nClasificacion del rendimiento:")
+print(df_clean[["average_score", "performance"]].head())
