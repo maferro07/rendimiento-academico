@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # Cargar el dataset
 df = pd.read_csv("data/StudentsPerformance.csv")
@@ -152,3 +153,53 @@ porcentaje_rendimiento = (
 )
 
 print(porcentaje_rendimiento)
+
+# =========================================
+# VISUALIZACIONES
+# =========================================
+
+# GRAFICA 1 - Promedio por materia
+
+materias = ["Matematicas", "Lectura", "Escritura"]
+promedios = [
+    df_clean["math_score"].mean(),
+    df_clean["reading_score"].mean(),
+    df_clean["writing_score"].mean()
+]
+
+plt.figure()
+plt.bar(materias, promedios)
+plt.title("Promedio por materia")
+plt.ylabel("Promedio")
+plt.tight_layout()
+plt.savefig("outputs/resultados/promedio_materias.png")
+plt.show()
+plt.close()
+
+
+# GRAFICA 2 - Curso de preparacion
+
+promedio_curso.plot(kind="bar")
+
+plt.title("Promedio segun curso de preparacion")
+plt.xlabel("Curso de preparacion")
+plt.ylabel("Promedio")
+plt.xticks(rotation=0)
+plt.tight_layout()
+plt.savefig("outputs/resultados/curso_preparacion.png")
+plt.show()
+plt.close()
+
+
+# GRAFICA 3 - Rendimiento academico
+
+df_clean["performance"].value_counts().plot(kind="bar")
+
+plt.title("Clasificacion del rendimiento academico")
+plt.xlabel("Rendimiento")
+plt.ylabel("Numero de estudiantes")
+plt.xticks(rotation=0)
+plt.tight_layout()
+plt.savefig("outputs/resultados/rendimiento_academico.png")
+plt.show()
+plt.close()
