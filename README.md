@@ -9,8 +9,11 @@ Se analizan las calificaciones obtenidas en matematicas, lectura y escritura, as
 ## Dataset
 
 Nombre del dataset: Students Performance in Exams
+
 Fuente: Kaggle
+
 Archivo utilizado: StudentsPerformance.csv
+
 El dataset contiene informacion sobre 1000 estudiantes y 8 variables.
 
 ## Objetivo
@@ -28,7 +31,7 @@ Para ejecutar este proyecto se necesita:
 
 Clonar el repositorio:
 
-git clone URL_DEL_REPOSITORIO
+git clone https://github.com/maferro07/rendimiento-academico.git
 
 Entrar a la carpeta:
 
