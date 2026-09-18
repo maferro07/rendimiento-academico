@@ -44,6 +44,8 @@ print(df.describe())
 
 # Crear una copia del dataset
 df_clean = df.copy()
+df_clean = df_clean.drop_duplicates()
+df_clean = df_clean.reset_index(drop=True)
 
 # Cambiar nombres de las columnas
 df_clean.columns = [
@@ -173,7 +175,6 @@ plt.title("Promedio por materia")
 plt.ylabel("Promedio")
 plt.tight_layout()
 plt.savefig("outputs/resultados/promedio_materias.png")
-plt.show()
 plt.close()
 
 
@@ -187,7 +188,6 @@ plt.ylabel("Promedio")
 plt.xticks(rotation=0)
 plt.tight_layout()
 plt.savefig("outputs/resultados/curso_preparacion.png")
-plt.show()
 plt.close()
 
 
@@ -201,5 +201,25 @@ plt.ylabel("Numero de estudiantes")
 plt.xticks(rotation=0)
 plt.tight_layout()
 plt.savefig("outputs/resultados/rendimiento_academico.png")
-plt.show()
 plt.close()
+
+# =========================================
+# CONCLUSIONES
+# =========================================
+
+print("\n=== CONCLUSIONES ===")
+
+promedios_por_area = {
+    "Matematicas": promedio_matematicas,
+    "Lectura": promedio_lectura,
+    "Escritura": promedio_escritura
+}
+area_mas_alta = max(promedios_por_area, key=promedios_por_area.get)
+
+print("- El area con mejor promedio fue:", area_mas_alta)
+
+diferencia_curso = round(promedio_curso.max() - promedio_curso.min(), 2)
+print("- Diferencia de promedio entre quienes tomaron el curso de preparacion y quienes no:", diferencia_curso)
+
+porcentaje_alto = round(porcentaje_rendimiento.get("Alto", 0), 2)
+print("- Porcentaje de estudiantes con rendimiento Alto:", porcentaje_alto, "%")
